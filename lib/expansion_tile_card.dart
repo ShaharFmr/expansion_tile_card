@@ -314,7 +314,7 @@ class ExpansionTileCardState extends State<ExpansionTileCard>
                     leading: widget.leading,
                     title: widget.title,
                     subtitle: widget.subtitle,
-                    trailing: showTrailingIcon ? RotationTransition(
+                    trailing: widget.showTrailingIcon ? RotationTransition(
                       turns: widget.trailing == null || widget.animateTrailing
                           ? _iconTurns
                           : AlwaysStoppedAnimation(0),
