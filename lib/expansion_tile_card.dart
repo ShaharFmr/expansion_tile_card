@@ -57,6 +57,10 @@ class ExpansionTileCard extends StatefulWidget {
     this.isThreeLine = false,
     this.shadowColor = const Color(0xffaaaaaa),
     this.animateTrailing = false,
+    this.showTrailingIcon = true,
+    this.minVerticalPadding,
+    this.horizontalTitleGap,
+    this.minLeadingWidth,
   });
 
   final bool isThreeLine;
@@ -178,6 +182,10 @@ class ExpansionTileCard extends StatefulWidget {
   ///
   /// Defaults to Curves.easeIn.
   final Curve paddingCurve;
+  final bool showTrailingIcon;
+  final double? minVerticalPadding;
+  final double? horizontalTitleGap;
+  final double? minLeadingWidth;
 
   @override
   ExpansionTileCardState createState() => ExpansionTileCardState();
@@ -297,21 +305,21 @@ class ExpansionTileCardState extends State<ExpansionTileCard>
                 child: ListTileTheme.merge(
                   iconColor: _iconColor.value,
                   textColor: _headerColor.value,
-                  child: Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: ListTile(
-                      isThreeLine: widget.isThreeLine,
-                      contentPadding: widget.contentPadding,
-                      leading: widget.leading,
-                      title: widget.title,
-                      subtitle: widget.subtitle,
-                      trailing: RotationTransition(
-                        turns: widget.trailing == null || widget.animateTrailing
-                            ? _iconTurns
-                            : AlwaysStoppedAnimation(0),
-                        child: widget.trailing ?? Icon(Icons.expand_more),
-                      ),
-                    ),
+                  child: ListTile(
+                    isThreeLine: widget.isThreeLine,
+                    minVerticalPadding: widget.minVerticalPadding,
+                    horizontalTitleGap: widget.horizontalTitleGap,
+                    minLeadingWidth: widget.minLeadingWidth,
+                    contentPadding: widget.contentPadding,
+                    leading: widget.leading,
+                    title: widget.title,
+                    subtitle: widget.subtitle,
+                    trailing: showTrailingIcon ? RotationTransition(
+                      turns: widget.trailing == null || widget.animateTrailing
+                          ? _iconTurns
+                          : AlwaysStoppedAnimation(0),
+                      child: widget.trailing ?? Icon(Icons.expand_more),
+                    ) : null,
                   ),
                 ),
               ),
