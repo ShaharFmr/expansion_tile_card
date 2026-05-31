@@ -58,6 +58,7 @@ class ExpansionTileCard extends StatefulWidget {
     this.shadowColor = const Color(0xffaaaaaa),
     this.animateTrailing = false,
     this.showTrailingIcon = true,
+    this.titleAlignment,
     this.minVerticalPadding,
     this.horizontalTitleGap,
     this.minLeadingWidth,
@@ -183,6 +184,7 @@ class ExpansionTileCard extends StatefulWidget {
   /// Defaults to Curves.easeIn.
   final Curve paddingCurve;
   final bool showTrailingIcon;
+  final ListTileTitleAlignment? titleAlignment;
   final double? minVerticalPadding;
   final double? horizontalTitleGap;
   final double? minLeadingWidth;
@@ -307,6 +309,7 @@ class ExpansionTileCardState extends State<ExpansionTileCard>
                   textColor: _headerColor.value,
                   child: ListTile(
                     isThreeLine: widget.isThreeLine,
+                    titleAlignment: widget.titleAlignment,
                     minVerticalPadding: widget.minVerticalPadding,
                     horizontalTitleGap: widget.horizontalTitleGap,
                     minLeadingWidth: widget.minLeadingWidth,
